@@ -10,3 +10,6 @@
 .natty-header>.logo .header-logo-image{--chip-size:clamp(100px,10vw,150px);position:fixed;left:calc(28px + var(--chip-size)*.056);top:calc(14px - var(--chip-size)*.597);width:calc(var(--chip-size)*2.237);height:calc(var(--chip-size)*2.237);max-height:none;object-fit:contain;pointer-events:none}
 @media(max-width:1023px){.natty-header>.logo .header-logo-image{left:calc(20px + var(--chip-size)*.056);top:calc(10px - var(--chip-size)*.597)}}
 @media(max-width:767px){.natty-header>.logo .header-logo-image{left:calc(4px + var(--chip-size)*.056);top:calc(6px - var(--chip-size)*.597)}}
+/* Align both navigation pills with the logo/chip center. */
+@media(min-width:1024px){.natty-header .header-surface{top:35px}.natty-header nav{top:67px}.natty-header>.nav-cta{transform:translateY(19px)}.natty-header>.nav-cta:hover{transform:translateY(19px) scale(1.035)}.natty-header[data-expanded=true] .header-surface{top:29px}.natty-header[data-expanded=true]>.nav-cta,.natty-header[data-expanded=true]>.nav-cta:hover{transform:translateY(19px)}}
+@media(max-width:1023px){.natty-header .header-surface{top:31px}.natty-header>.nav-cta,.natty-header>#menu{transform:translateY(13px)}.natty-header[data-expanded=true] .header-surface{top:21px}.natty-header[data-expanded=true]>.nav-cta{transform:translateY(13px)}}
