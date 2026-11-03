@@ -13,3 +13,5 @@
 /* Align both navigation pills with the logo/chip center. */
 @media(min-width:1024px){.natty-header .header-surface{top:35px}.natty-header nav{top:67px}.natty-header>.nav-cta{transform:translateY(19px)}.natty-header>.nav-cta:hover{transform:translateY(19px) scale(1.035)}.natty-header[data-expanded=true] .header-surface{top:29px}.natty-header[data-expanded=true]>.nav-cta,.natty-header[data-expanded=true]>.nav-cta:hover{transform:translateY(19px)}}
 @media(max-width:1023px){.natty-header .header-surface{top:31px}.natty-header>.nav-cta,.natty-header>#menu{transform:translateY(13px)}.natty-header[data-expanded=true] .header-surface{top:21px}.natty-header[data-expanded=true]>.nav-cta{transform:translateY(13px)}}
+
+.portfolio-feed .board-footnote,.portfolio-feed .portfolio-more{display:none}.portfolio-feed .board-blur-wall{gap:20px}.portfolio-feed .board-all-link{position:relative;z-index:1;margin-top:38px;color:#00529c;font-size:13px;font-weight:700;text-decoration:underline;text-underline-offset:4px}.portfolio-feed .board-load-more[hidden]{display:none}
