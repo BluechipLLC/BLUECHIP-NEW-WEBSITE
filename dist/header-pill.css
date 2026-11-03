@@ -1,2 +1,2 @@
-.natty-header[data-expanded=true] .header-surface{top:10px;width:calc(100% - 48px);height:76px;border-radius:999px;border:1px solid rgba(0,0,0,.1);background:rgba(255,255,255,.78);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px)}
+.natty-header[data-expanded=true] .header-surface{top:10px;width:calc(100% - 48px);height:76px;border-radius:999px;border:1px solid rgba(0,0,0,.1);background:rgba(255,255,255,.94);backdrop-filter:blur(5px);-webkit-backdrop-filter:blur(5px)}
 @media(max-width:1023px){.natty-header[data-expanded=true] .header-surface{left:12px;right:12px;top:8px;width:auto;height:64px;transform:none;opacity:1;border-radius:999px}}
