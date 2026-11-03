@@ -15,3 +15,5 @@
 @media(max-width:1023px){.natty-header .header-surface{top:31px}.natty-header>.nav-cta,.natty-header>#menu{transform:translateY(13px)}.natty-header[data-expanded=true] .header-surface{top:21px}.natty-header[data-expanded=true]>.nav-cta{transform:translateY(13px)}}
 
 .portfolio-feed .board-footnote,.portfolio-feed .portfolio-more{display:none}.portfolio-feed .board-blur-wall{gap:20px}.portfolio-feed .board-all-link{position:relative;z-index:1;margin-top:38px;color:#00529c;font-size:13px;font-weight:700;text-decoration:underline;text-underline-offset:4px}.portfolio-feed .board-load-more[hidden]{display:none}
+/* The expanded surface passes over the wordmark, with the animated chip above it. */
+.natty-header[data-expanded=true] .header-surface{z-index:1}.natty-header[data-expanded=true]>.logo{z-index:auto}.natty-header[data-expanded=true] .header-logo-image{z-index:0}.natty-header[data-expanded=true] .header-chip{z-index:2}.natty-header[data-expanded=true] nav,.natty-header[data-expanded=true]>.nav-cta,.natty-header[data-expanded=true]>#menu{z-index:3;position:relative}.natty-header[data-expanded=true] nav{position:absolute}
