@@ -10,5 +10,5 @@
  const wall=document.createElement('div');wall.className='board-blur-wall';const more=document.createElement('button');more.type='button';more.className='button board-load-more';more.textContent='Load more';wall.append(more);viewport.after(wall);
  const status=host.querySelector('.board-status');
  function render(){grid.replaceChildren();clients.slice(0,shown).forEach(([name,color,url],i)=>{const tile=document.createElement(url?'a':'div');tile.className='client-tile';tile.style.backgroundColor=color;tile.style.aspectRatio=ratios[i%ratios.length];if(url)tile.href='/work/'+url;const label=document.createElement('strong');label.textContent=name;tile.append(label);if(url){const action=document.createElement('span');action.textContent='See more ↗';tile.append(action)}grid.append(tile)});wall.hidden=shown>=clients.length;status.textContent=`${shown} of ${clients.length} clients shown.`}
- more.addEventListener('click',()=>{shown=Math.min(shown+4,clients.length);render()});shown=Math.min(8,clients.length);render();
+ more.addEventListener('click',()=>{shown=Math.min(shown+4,clients.length);render()});shown=Math.min(16,clients.length);render();
 })();
