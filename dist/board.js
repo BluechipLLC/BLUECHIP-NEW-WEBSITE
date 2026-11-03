@@ -4,7 +4,7 @@
  const viewport=document.createElement('div');viewport.className='board-viewport';grid.before(viewport);viewport.append(grid);
  const wall=document.createElement('div');wall.className='board-blur-wall';
  const more=document.createElement('button');more.type='button';more.className='button board-load-more';more.textContent='Load more';wall.append(more);viewport.after(wall);
- let visibleCount=4,lastBoxes=[];
+ let visibleCount=8,lastBoxes=[];
  function updateReveal(boxes=lastBoxes){if(!boxes.length)return;lastBoxes=boxes;const order=boxes.map((b,i)=>({i,y:b.y,x:b.x})).sort((a,b)=>a.y-b.y||a.x-b.x);const visible=new Set(order.slice(0,visibleCount).map(v=>v.i));if(selected>=0)visible.add(selected);cards.forEach((card,i)=>{card.style.visibility=visible.has(i)?'visible':'hidden';card.inert=!visible.has(i)});const bottom=Math.max(...[...visible].map(i=>boxes[i].y+boxes[i].h));viewport.style.height=bottom+'px';wall.hidden=visibleCount>=cards.length;}
  more.addEventListener('click',()=>{visibleCount=Math.min(visibleCount+4,cards.length);updateReveal();status.textContent=`${visibleCount} project previews shown.`});
 
