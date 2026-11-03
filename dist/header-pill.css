@@ -23,3 +23,4 @@
 /* Narrower navigation and expanded pill, preserving vertical alignment. */
 @media(min-width:1024px){.natty-header .header-surface{width:min(480px,40vw)}.natty-header nav{width:min(440px,37vw)}.natty-header[data-expanded=true] .header-surface{width:calc(100% - 6%)}.natty-header[data-expanded=true] nav{width:min(500px,40vw)}}
 @media(max-width:1023px){.natty-header[data-expanded=true] .header-surface{left:5%;right:5%}}
+.natty-header .nav-services #services-toggle{transition:transform .2s ease}.natty-header .nav-services:hover #services-toggle,.natty-header .nav-services:focus-within #services-toggle,.natty-header #services-toggle[aria-expanded=true]{transform:rotate(90deg)}.natty-header .nav-services .dropdown{top:100%;padding-top:12px}.natty-header .nav-services .dropdown[hidden]{display:none}
