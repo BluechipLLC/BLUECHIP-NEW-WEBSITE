@@ -4,3 +4,5 @@
 
 /* The blue button itself joins the white header without a backing bubble. */
 .natty-header>.nav-cta::before{content:"";position:absolute;z-index:-1;left:20%;right:20%;top:-13px;height:22px;background:#00529c;border-radius:45% 45% 0 0;transform:scaleY(0);transform-origin:bottom;transition:transform 620ms cubic-bezier(.16,1.06,.3,1);pointer-events:none}.natty-header[data-expanded=true]>.nav-cta::before{transform:scaleY(1)}.natty-header>.nav-cta{isolation:isolate}.natty-header>.nav-cta:hover::before{background:#003e76}@media(prefers-reduced-motion:reduce){.natty-header>.nav-cta::before{transition:none}}
+/* Merge the action into the header surface when scrolled. */
+.natty-header[data-expanded=true]>.nav-cta{transform:none;background:transparent;color:#00529c;box-shadow:none}.natty-header[data-expanded=true]>.nav-cta:hover{transform:none;background:rgba(0,82,156,.08);color:#00529c}.natty-header[data-expanded=true]>.nav-cta::before{display:none}@media(max-width:1023px){.natty-header[data-expanded=true]>.nav-cta{transform:none}}
