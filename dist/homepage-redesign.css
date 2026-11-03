@@ -3,3 +3,5 @@
 
 .home-hero-intro{padding:clamp(45px,6vw,85px) 5%;background:#fff;color:#000}.home-hero-intro p{max-width:750px;font-size:clamp(20px,2.2vw,32px);line-height:1.45;letter-spacing:-.025em}.home-hero-intro .home-hero-link{color:#00529c;border-color:#00529c}
 .home-hero-intro{background:linear-gradient(125deg,#00529c 0%,#003566 100%);color:#fff}.home-hero-intro .home-button{background:#fff;color:#00529c}.home-hero-intro .home-hero-link{color:#fff;border-color:#fff}
+
+.portfolio-feed .board-caption,.portfolio-feed .board-intro{display:none}
