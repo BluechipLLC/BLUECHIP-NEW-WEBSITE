@@ -22,3 +22,5 @@
 /* Compact header geometry */
 @media(min-width:1024px){.natty-header .header-surface{top:14px;height:52px}.natty-header nav{top:40px;height:44px}.natty-header>.nav-cta,.natty-header>.nav-cta:hover{transform:translateY(-8px);padding:13px 19px}.natty-header[data-expanded=true] .header-surface{top:8px;height:64px}.natty-header[data-expanded=true] nav{top:40px}.natty-header[data-expanded=true]>.nav-cta,.natty-header[data-expanded=true]>.nav-cta:hover{transform:translateY(-8px)}}
 @media(max-width:1023px){.natty-header .header-surface{top:12px}.natty-header>.nav-cta,.natty-header>#menu,.natty-header[data-expanded=true]>.nav-cta{transform:translateY(-3px)}.natty-header[data-expanded=true] .header-surface{top:8px;height:56px}}
+@media(min-width:1024px){.natty-header>.logo .header-chip{top:-13px}.natty-header>.logo .header-logo-image{top:calc(-13px - var(--chip-size)*.597)}}
+@media(max-width:1023px){.natty-header>.logo .header-chip{top:-6px}.natty-header>.logo .header-logo-image{top:calc(-6px - var(--chip-size)*.597)}}
