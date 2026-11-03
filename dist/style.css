@@ -122,3 +122,5 @@ html.has-portfolio-board{overflow-anchor:none}
 
 /* Full-bleed hero image extends under the fixed navigation. */
 .hero{margin-top:-96px;min-height: min(820px, 100svh);padding:150px 5% 80px;display:flex;flex-direction:column;justify-content:space-between;color:#fff;background:linear-gradient(90deg,rgba(0,0,0,.7),rgba(0,0,0,.18)),url('/assets/cold-harbor-3.webp') center 52% / cover no-repeat}.hero .studio-status:before{background:#fff}.hero-grid{display:block;padding:100px 0 20px}.hero h1{max-width:950px;color:white}.hero h1 .blue{color:white}@media(max-width:1023px){.hero{margin-top:-80px;padding-top:120px;min-height:80svh}}@media(max-width:600px){.hero{min-height:78svh;padding-bottom:55px;background-position:60% center}.hero-grid{padding-top:70px}.hero h1{font-size:clamp(48px,11vw,70px)}}
+
+.hero-statement{max-width:650px;margin-top:28px;font-size:clamp(17px,1.5vw,21px);line-height:1.6;color:#fff}
