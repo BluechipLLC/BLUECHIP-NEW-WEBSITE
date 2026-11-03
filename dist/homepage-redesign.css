@@ -6,3 +6,4 @@
 
 .portfolio-feed .board-caption,.portfolio-feed .board-intro{display:none}
 .section:has(>.portfolio-feed){padding-top:36px}.section:has(>.portfolio-feed)>.section-heading{margin-bottom:22px}.section:has(>.portfolio-feed)>.section-heading h2{font-size:clamp(24px,2.5vw,36px);letter-spacing:-.04em}
+.home-hero-intro{background:#fff;color:#000}.home-hero-intro .home-button{background:#00529c;color:#fff}.home-hero-intro .home-hero-link{color:#00529c;border-color:#00529c}
