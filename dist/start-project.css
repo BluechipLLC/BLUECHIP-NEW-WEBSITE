@@ -1,0 +1,196 @@
+#start-project {
+  position: fixed;
+  inset: 0;
+  width: min(760px, calc(100% - 48px));
+  height: fit-content;
+  max-height: calc(100dvh - 48px);
+  margin: auto;
+  padding: 0;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: 24px;
+  color: var(--ink);
+  background: var(--paper);
+}
+
+#start-project.project-booking { width: min(1020px, calc(100% - 48px)); }
+#start-project::backdrop { background: rgb(12 25 40 / 57%); }
+#start-project[open] { animation: project-open 220ms ease-out; }
+
+@keyframes project-open {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+#start-project .project-shell {
+  display: flex;
+  flex-direction: column;
+  max-height: inherit;
+}
+
+#start-project .project-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex: none;
+  height: auto;
+  min-height: 64px;
+  padding: 8px clamp(20px, 5vw, 42px);
+  border-bottom: 1px solid var(--line);
+  font-weight: 750;
+  font-size: 15px;
+  color: var(--blue);
+  position: static;
+}
+
+#start-project .project-scroll {
+  overflow: auto;
+  overscroll-behavior: contain;
+  padding: 24px clamp(20px, 5vw, 42px) 30px;
+}
+
+#start-project .project-progress { margin-bottom: 22px; }
+#start-project .project-progress p {
+  margin: 0 0 10px;
+  color: var(--blue);
+  font-size: 13px;
+  font-weight: 700;
+}
+
+#start-project .project-progress ol {
+  display: flex;
+  gap: 5px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+#start-project .project-progress li {
+  flex: 1;
+  height: 3px;
+  border-radius: 999px;
+  background: #e3e9ee;
+  transition: background 180ms ease;
+}
+
+#start-project .project-progress .project-progress-active { background: var(--blue); }
+#start-project h2 { margin: 0; font-size: clamp(29px, 5vw, 44px); line-height: 1.05; letter-spacing: -.042em; }
+#start-project h2:focus { outline: none; }
+#start-project h3 { margin: 0; font-size: 20px; line-height: 1.15; letter-spacing: -.02em; }
+#start-project .project-intro { margin: 10px 0 22px; color: #455462; font-size: 15px; line-height: 1.5; }
+#start-project .project-sr { position: absolute; width: 1px; height: 1px; padding: 0; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+#start-project fieldset { min-width: 0; margin: 0; }
+#start-project .project-categories, #start-project form { display: grid; gap: 10px; }
+#start-project .project-services, #start-project .project-fields, #start-project .project-paths {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+#start-project label { display: block; margin: 0; font-size: 14px; font-weight: 650; }
+#start-project label.project-option {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-height: 49px;
+  padding: 11px 14px;
+  border: 1px solid var(--line);
+  border-radius: 13px;
+  cursor: pointer;
+  transition: background 180ms ease, border-color 180ms ease;
+}
+
+#start-project label.project-option:hover { border-color: #6489ac; }
+#start-project label.project-option:has(:checked) { border-color: var(--blue); background: #edf5fc; }
+#start-project .project-option input { flex: none; width: 18px; height: 18px; margin: 0; accent-color: var(--blue); }
+#start-project .project-option-copy { display: grid; gap: 4px; line-height: 1.32; }
+#start-project .project-option-copy span { color: #455462; font-weight: 400; }
+#start-project .project-categories strong { font-size: 16px; }
+#start-project .project-optional { font-weight: 400; color: #516071; }
+#start-project :is(input:not([type=radio], [type=checkbox]), textarea, select) {
+  min-height: 46px;
+  margin: 6px 0 0;
+  padding: 10px 12px;
+  border: 1px solid #aeb9c2;
+  border-radius: 9px;
+  background: white;
+  color: var(--ink);
+  font-size: 16px;
+  font-weight: 400;
+}
+
+#start-project textarea { min-height: 100px; }
+#start-project .project-fields { row-gap: 14px; }
+#start-project .project-paths section {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  min-width: 0;
+  padding: 19px;
+  border: 1px solid var(--line);
+  border-radius: 16px;
+}
+
+#start-project .project-paths p, #start-project .project-confirmation p {
+  color: #455462;
+  font-size: 14px;
+  line-height: 1.55;
+  margin: 8px 0 16px;
+}
+#start-project .project-paths button { margin-top: auto; }
+#start-project .project-actions { display: flex; align-items: center; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
+#start-project .project-actions > .project-primary { margin-left: auto; }
+#start-project button { float: none; font-family: inherit; }
+#start-project :is(.project-primary, .project-back, .project-close) {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 44px;
+  padding: 10px 16px;
+  border: 1px solid transparent;
+  border-radius: 999px;
+  color: var(--blue);
+  font-size: 14px;
+  font-weight: 750;
+  line-height: 1.2;
+}
+
+#start-project .project-primary { background: var(--blue); color: white; }
+#start-project .project-primary:hover { background: #003e76; }
+#start-project .project-back:hover, #start-project .project-close:hover { background: #edf5fc; }
+#start-project .project-close { width: 44px; padding: 0; font-size: 27px; font-weight: 500; border-color: var(--line); }
+#start-project [aria-disabled=true] { opacity: .6; cursor: wait; }
+#start-project :is(button, a, input, textarea, select):focus-visible { outline: 2px solid var(--blue); outline-offset: 3px; }
+#start-project .project-error, #start-project .project-message { font-size: 14px; line-height: 1.45; margin: 10px 0 0; }
+#start-project .project-error { color: #9f2421; }
+#start-project :is(.project-error, .project-message):empty { margin: 0; }
+#start-project .project-confirmation a { display: inline; padding: 0; color: var(--blue); font-size: inherit; text-decoration: underline; }
+#start-project .project-reference { overflow-wrap: anywhere; }
+#start-project .project-calendar { width: 100%; min-width: 0; }
+#start-project .project-calendar iframe { display: block; max-width: 100%; border: 0; }
+#start-project [hidden] { display: none; }
+
+@media (max-width: 620px) {
+  #start-project, #start-project.project-booking {
+    width: 100%;
+    height: 100dvh;
+    max-height: 100dvh;
+    border: 0;
+    border-radius: 0;
+  }
+  #start-project .project-shell { height: 100%; }
+  #start-project .project-scroll { flex: 1; padding-bottom: max(24px, env(safe-area-inset-bottom)); }
+  #start-project .project-header { padding-top: max(8px, env(safe-area-inset-top)); }
+  #start-project .project-paths, #start-project .project-fields { grid-template-columns: minmax(0, 1fr); }
+  #start-project .project-calendar-actions > .project-primary { margin-left: 0; }
+}
+
+@media (max-width: 350px) {
+  #start-project .project-services { grid-template-columns: minmax(0, 1fr); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #start-project[open], #start-project .project-progress li, #start-project label.project-option { animation: none; transition: none; }
+}

@@ -1,7 +1,8 @@
 (() => {
   const logo = document.querySelector('.natty-header > .logo');
   const canvas = logo?.querySelector('.header-chip');
-  if (!canvas || matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  if (!canvas) return;
+  const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)');
   const ctx = canvas.getContext('2d');
   const sprite = new Image();
   let frame = 0, velocity = 0, lastY = scrollY, raf = 0, loaded = false;
@@ -22,9 +23,16 @@
     velocity += (y - lastY) * .008;
     lastY = y;
     logo.classList.toggle('chip-visible', loaded && y > 10);
-    if (loaded && velocity && !raf) raf = requestAnimationFrame(animate);
+    if (reducedMotion.matches) {
+      cancelAnimationFrame(raf);
+      frame = velocity = raf = 0;
+      if (loaded) draw();
+    } else if (loaded && velocity && !raf) {
+      raf = requestAnimationFrame(animate);
+    }
   }
   sprite.onload = () => { loaded = true; draw(); onScroll(); };
   sprite.src = '/assets/chip-frames.webp';
   addEventListener('scroll', onScroll, { passive: true });
+  reducedMotion.addEventListener('change', onScroll);
 })();
