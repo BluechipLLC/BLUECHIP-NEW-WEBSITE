@@ -1,0 +1,373 @@
+.natty-header:is([data-expanded=true], [data-media-compact=true]) .header-surface{top:10px;width:calc(100% - 48px);height:76px;border-radius:999px;border:1px solid rgba(0,0,0,.1)}
+@media(max-width:1023px){.natty-header:is([data-expanded=true], [data-media-compact=true]) .header-surface{left:12px;right:12px;top:8px;width:auto;height:64px;transform:none;opacity:1;border-radius:999px}}
+/* Draw the blue capsule separately so the label stays in place as it merges. */
+.natty-header > .nav-cta {
+  position: relative;
+  isolation: isolate;
+  z-index: 3;
+  background: transparent;
+  color: var(--merge-label, white);
+  transition: transform 320ms ease, translate 320ms ease, color 100ms ease, background-color 240ms ease;
+}
+.natty-header > .nav-cta::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  border-radius: inherit;
+  background: var(--blue);
+  pointer-events: none;
+  opacity: var(--capsule-opacity, 1);
+  transition: background-color 200ms ease;
+}
+.natty-header > .nav-cta:hover::before { background: #003e76; }
+.natty-header:is([data-expanded=true], [data-media-compact=true]) > .nav-cta {
+  color: var(--merge-label, #00529c);
+  box-shadow: none;
+}
+.natty-header:is([data-expanded=true], [data-media-compact=true]) > .nav-cta:hover { background-color: rgb(0 82 156 / 8%); }
+.natty-header:is([data-expanded=true], [data-media-compact=true]) > .nav-cta::before {
+  opacity: var(--capsule-opacity, 0);
+}
+.natty-header .header-merge {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+  pointer-events: none;
+}
+/* Align the chip embedded in the wordmark to frame one of the spinning chip. */
+.natty-header>.logo {
+  --chip-size: clamp(100px, 10vw, 150px);
+  --chip-left: 28px;
+  --chip-top: 14px;
+  --wordmark-left: calc(var(--chip-left) + var(--chip-size) * .056);
+  --wordmark-top: calc(var(--chip-top) - var(--chip-size) * .597);
+  --wordmark-size: calc(var(--chip-size) * 2.237);
+  pointer-events: none;
+}
+.natty-header>.logo .header-logo-image {
+  position: fixed;
+  left: var(--wordmark-left);
+  top: var(--wordmark-top);
+  width: var(--wordmark-size);
+  height: var(--wordmark-size);
+  max-height: none;
+  object-fit: contain;
+  pointer-events: none;
+}
+/* Match the clickable area to the artwork inside the transparent square. */
+.natty-header>.logo::before {
+  content: "";
+  position: fixed;
+  left: calc(var(--wordmark-left) + var(--wordmark-size) * .04);
+  top: calc(var(--wordmark-top) + var(--wordmark-size) * .326);
+  width: calc(var(--wordmark-size) * .92);
+  height: calc(var(--wordmark-size) * .348);
+  border-radius: 12px;
+  pointer-events: auto;
+}
+.natty-header>.logo.chip-visible::before {
+  left: calc(var(--chip-left) + var(--chip-size) * .15);
+  top: calc(var(--chip-top) + var(--chip-size) * .13);
+  width: calc(var(--chip-size) * .7);
+  height: calc(var(--chip-size) * .79);
+}
+.natty-header>.logo:focus-visible {
+  outline: none;
+}
+.natty-header>.logo:focus-visible::before {
+  outline: 2px solid var(--blue);
+  outline-offset: 3px;
+}
+@media (max-width: 1023px) {
+  .natty-header>.logo { --chip-left: 20px; --chip-top: 10px; }
+}
+@media (max-width: 767px) {
+  .natty-header>.logo { --chip-left: 4px; --chip-top: 6px; }
+}
+/* Align both navigation pills with the logo/chip center. */
+@media(min-width:1024px){.natty-header .header-surface{top:35px}.natty-header nav{top:67px}.natty-header>.nav-cta{transform:translateY(19px)}.natty-header>.nav-cta:hover{transform:translateY(19px) scale(1.035)}.natty-header:is([data-expanded=true], [data-media-compact=true]) .header-surface{top:29px}.natty-header:is([data-expanded=true], [data-media-compact=true])>.nav-cta,.natty-header:is([data-expanded=true], [data-media-compact=true])>.nav-cta:hover{transform:translateY(19px)}}
+@media(max-width:1023px){.natty-header .header-surface{top:31px}.natty-header>.nav-cta,.natty-header>#menu{transform:translateY(13px)}.natty-header:is([data-expanded=true], [data-media-compact=true]) .header-surface{top:21px}.natty-header:is([data-expanded=true], [data-media-compact=true])>.nav-cta{transform:translateY(13px)}}
+
+.portfolio-feed .board-footnote,.portfolio-feed .portfolio-more{display:none}.portfolio-feed .board-blur-wall{gap:20px}.portfolio-feed .board-all-link{position:relative;z-index:1;margin-top:38px;color:#00529c;font-size:13px;font-weight:700;text-decoration:underline;text-underline-offset:4px}.portfolio-feed .board-load-more[hidden]{display:none}
+/* Both wide surfaces sit behind the chip and navigation controls. */
+.natty-header:is([data-expanded=true], [data-media-compact=true]) .header-surface{z-index:1}.natty-header:is([data-expanded=true], [data-media-compact=true])>.logo{z-index:auto}.natty-header:is([data-expanded=true], [data-media-compact=true]) .header-logo-image{z-index:0}.natty-header:is([data-expanded=true], [data-media-compact=true]) .header-chip{z-index:2}.natty-header:is([data-expanded=true], [data-media-compact=true]) nav,.natty-header:is([data-expanded=true], [data-media-compact=true])>.nav-cta,.natty-header:is([data-expanded=true], [data-media-compact=true])>#menu{z-index:3;position:relative}.natty-header:is([data-expanded=true], [data-media-compact=true]) nav{position:absolute}
+/* Compact portfolio controls and blur the lower edge of the cards. */
+.portfolio-feed .board-blur-wall{height:130px;margin-top:-75px;background:transparent;align-items:flex-end;padding-bottom:0}.portfolio-feed .board-blur-wall::before{background:transparent;backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);mask-image:linear-gradient(to bottom,transparent,#000 80%);-webkit-mask-image:linear-gradient(to bottom,transparent,#000 80%)}.portfolio-feed .board-load-more,.portfolio-feed .board-all-link{margin-top:0;margin-bottom:0}.portfolio-feed .board-all-link{display:inline-flex;align-items:center;justify-content:center;padding:17px 23px;border-radius:999px;background:#00529c;color:white;text-decoration:none;font-size:14px}.portfolio-feed .board-all-link:hover{background:#003e76}.section:has(>.portfolio-feed){padding-bottom:24px}
+
+/* Narrower navigation and expanded pill, preserving vertical alignment. */
+@media(min-width:1024px){.natty-header .header-surface{width:min(480px,40vw)}.natty-header nav{width:min(440px,37vw)}.natty-header:is([data-expanded=true], [data-media-compact=true]) .header-surface{width:calc(100% - 6%)}.natty-header:is([data-expanded=true], [data-media-compact=true]) nav{width:min(500px,40vw)}}
+@media(max-width:1023px){.natty-header:is([data-expanded=true], [data-media-compact=true]) .header-surface{left:5%;right:5%}}
+.natty-header .nav-services #services-toggle{transition:transform .2s ease}.natty-header .nav-services:hover #services-toggle,.natty-header .nav-services:focus-within #services-toggle,.natty-header #services-toggle[aria-expanded=true]{transform:rotate(90deg)}.natty-header .nav-services .dropdown{top:100%;padding-top:12px}.natty-header .nav-services .dropdown[hidden]{display:none}
+
+.natty-header nav:has(>.nav-home),
+#mobile-menu .mobile-island-links:has(>.nav-home) {
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+}
+.natty-header nav:has(>.nav-home) .nav-indicator,
+#mobile-menu .mobile-island-links:has(>.nav-home) .mobile-nav-indicator {
+  width: 20%;
+}
+.natty-header nav>.nav-home,
+#mobile-menu[open] .nav-home {
+  animation: nav-home-in 420ms cubic-bezier(.22, 1, .36, 1) both;
+}
+@keyframes nav-home-in {
+  from { opacity: 0; translate: 10px 0; }
+  to { opacity: 1; translate: 0 0; }
+}
+.client-tile.has-image{background-size:cover!important;background-position:center!important}.client-tile.has-image strong,.client-tile.has-image span{text-shadow:0 1px 4px rgba(0,0,0,.65)}.detail-visual:has(.detail-media-stage){padding:0;display:flex;flex-direction:column;justify-content:center;overflow:hidden}.detail-media-stage{position:absolute;inset:0;display:flex;align-items:center;justify-content:center}.detail-media-stage img,.detail-media-stage video{width:100%;height:100%;object-fit:contain}.detail-media-controls{position:absolute;bottom:18px;left:50%;transform:translateX(-50%);display:flex;align-items:center;gap:12px;border-radius:999px;background:rgba(0,0,0,.76);color:#fff;padding:6px;z-index:2;white-space:nowrap;font-size:12px}.detail-media-controls button{border:0;border-radius:999px;background:#fff;color:#111;padding:10px 14px;font-size:12px;font-weight:700}.detail-media-controls span{min-width:38px;text-align:center}.detail-close{z-index:3}
+
+/* Reveal project details only when a card is hovered or focused. */
+.client-tile::before{content:"";position:absolute;inset:0;border-radius:inherit;background:linear-gradient(to bottom,rgba(0,0,0,.6),transparent 60%);opacity:0;transition:opacity .2s;pointer-events:none}.client-tile strong,.client-tile span{position:relative;z-index:1;opacity:0;transition:opacity .2s}.client-tile:hover::before,.client-tile:focus-visible::before,.client-tile:hover strong,.client-tile:focus-visible strong,.client-tile:hover span,.client-tile:focus-visible span{opacity:1}
+
+/* Keep the complete artwork visible, including every logo. */
+.client-tile.has-image{background-size:contain!important;background-repeat:no-repeat!important}
+
+/* Soft depth around portfolio cards. */
+.client-tile{box-shadow:0 4px 16px rgba(0,0,0,.09)}
+
+/* Keep a project's extra media directly beneath its pin in the masonry grid. */
+.client-tile-group {
+  display: inline-block;
+  width: 100%;
+  break-inside: avoid;
+  vertical-align: top;
+}
+.portfolio-feed:has(.client-tile-group) .board-blur-wall {
+  height: 55px;
+  margin-top: 0;
+}
+.client-tile.has-preview { overflow: hidden; }
+.client-tile.has-preview::before { z-index: 1; }
+.client-tile.has-preview strong, .client-tile.has-preview span { z-index: 2; }
+.client-tile-media {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  pointer-events: none;
+}
+.client-video-card { position: relative; display: flow-root; break-inside: avoid; }
+.client-video-sound {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  z-index: 3;
+  min-height: 44px;
+  padding: 0 14px;
+  border: 1px solid rgb(255 255 255 / 35%);
+  border-radius: 999px;
+  background: rgb(0 0 0 / 80%);
+  color: white;
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 700;
+  line-height: 1;
+  cursor: pointer;
+}
+.client-video-sound:hover { background: #00529c; }
+.client-video-sound:focus-visible { outline: 2px solid white; outline-offset: 2px; }
+.client-video-card .client-tile strong { margin-right: 62px; }
+
+/* Give the media boards narrower pins and consistent gutters at both entry points. */
+.section:has(> .portfolio-feed), .work-feed { padding-inline: clamp(12px, 2.5vw, 44px); }
+.portfolio-feed .client-board, .work-media-batch {
+  columns: 7 185px;
+  column-gap: 12px;
+}
+.portfolio-feed .client-tile, .work-portfolio .client-tile {
+  min-height: 64px;
+  margin-bottom: 12px;
+  padding: clamp(8px, 1vw, 16px);
+  border-radius: 13px;
+  box-shadow: none;
+}
+.portfolio-feed .client-tile strong, .work-portfolio .client-tile strong {
+  font-size: clamp(15px, 1.5vw, 23px);
+}
+.portfolio-feed .client-tile span, .work-portfolio .client-tile span { padding: 6px 9px; }
+.work-portfolio .client-tile-media { object-fit: contain; }
+@media (max-width: 560px) {
+  .portfolio-feed .client-board, .work-media-batch { columns: 2; column-gap: 9px; }
+  .portfolio-feed .client-tile, .work-portfolio .client-tile { margin-bottom: 9px; border-radius: 11px; }
+}
+
+/* Expand on scroll and contract while the media gallery is in view. */
+.natty-header {
+  translate: 0 -4px;
+  transition: translate 320ms ease;
+}
+.natty-header[data-media-compact=true] { translate: 0 -11px; }
+.natty-header nav { transition: width 320ms ease, height 320ms ease, top 320ms ease; }
+.natty-header .header-surface {
+  transition: width 320ms ease, height 320ms ease, top 320ms ease,
+    left 320ms ease, right 320ms ease, opacity 320ms ease, background-color 320ms ease;
+}
+@media (max-width: 1023px) {
+  .natty-header[data-expanded=false][data-media-compact=false] .header-surface {
+    left: calc(100% - 72px);
+    width: auto;
+  }
+}
+@media (max-width: 767px) {
+  .natty-header[data-expanded=false][data-media-compact=false] .header-surface { left: calc(100% - 64px); }
+}
+.natty-header > .logo .header-chip {
+  transform-origin: 60% 50%;
+  transition: opacity .2s ease, translate 320ms ease, scale 320ms ease;
+}
+.natty-header[data-media-compact=true] {
+  --gallery-logo-shift: 8vw;
+  --gallery-action-shift: 9vw;
+  --gallery-chip-scale: .84;
+  --gallery-rise: -7px;
+}
+.natty-header[data-media-compact=true] > .logo :is(.header-chip, .header-logo-image),
+.natty-header[data-media-compact=true] > .logo::before {
+  translate: var(--gallery-logo-shift) var(--gallery-rise);
+}
+.natty-header[data-media-compact=true] > .logo .header-chip { scale: var(--gallery-chip-scale); }
+.natty-header[data-media-compact=true] > :is(.nav-cta, #menu) {
+  translate: calc(-1 * var(--gallery-action-shift)) var(--gallery-rise);
+}
+
+@media (min-width: 1024px) {
+  .natty-header[data-media-compact=true] .header-surface {
+    top: 29px;
+    width: 76%;
+    height: 62px;
+  }
+  .natty-header[data-media-compact=true] nav {
+    top: calc(67px + var(--gallery-rise));
+    width: min(420px, 34vw);
+    height: 46px;
+  }
+}
+
+@media (max-width: 1023px) {
+  .natty-header[data-media-compact=true] {
+    --gallery-logo-shift: 6vw;
+    --gallery-action-shift: max(3vw, calc(11vw - 8px));
+    --gallery-rise: -5px;
+  }
+  .natty-header #menu { transition: translate 320ms ease, scale 240ms ease; }
+  .natty-header[data-media-compact=true] .header-surface {
+    top: 21px;
+    left: 11%;
+    right: 11%;
+    height: 54px;
+  }
+}
+
+@media (hover: hover) {
+  .natty-header:hover > .logo .header-chip { scale: 1.05; }
+  .natty-header[data-media-compact=true] .header-surface { pointer-events: auto; }
+  .natty-header[data-media-compact=true]:hover {
+    --gallery-logo-shift: 0px;
+    --gallery-action-shift: 0px;
+    --gallery-chip-scale: 1;
+    --gallery-rise: 0px;
+  }
+}
+
+@media (min-width: 1024px) and (hover: hover) {
+  .natty-header[data-media-compact=true]:hover .header-surface {
+    top: 29px;
+    width: 94%;
+    height: 76px;
+  }
+  .natty-header[data-media-compact=true]:hover nav {
+    width: min(500px, 40vw);
+    height: 52px;
+  }
+}
+
+@media (max-width: 1023px) and (hover: hover) {
+  .natty-header[data-media-compact=true]:hover .header-surface {
+    top: 21px;
+    left: 5%;
+    right: 5%;
+    height: 64px;
+  }
+}
+
+@media (max-width: 1023px) and (hover: hover) {
+  .natty-header > #menu:hover { scale: 1.05; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .natty-header, .natty-header nav, .natty-header .header-surface, .natty-header > .logo .header-chip,
+  .natty-header > .nav-cta, .natty-header > .nav-cta::before { transition: none; }
+  .natty-header > .logo .header-chip { display: block; }
+  .natty-header > .logo.chip-visible .header-logo-image { opacity: 0; }
+}
+
+/* The indicator clips a white copy of the labels as it moves over them. */
+@property --desktop-nav-index {
+  syntax: '<number>';
+  inherits: true;
+  initial-value: 0;
+}
+.natty-header nav {
+  --nav-columns: 4;
+  --desktop-nav-index: var(--nav-index, 0);
+  container-type: inline-size;
+  transition: width 320ms ease, height 320ms ease, top 320ms ease,
+    --desktop-nav-index 540ms cubic-bezier(.22, 1, .36, 1);
+}
+.natty-header nav:has(> .nav-home) { --nav-columns: 5; }
+.natty-header nav > .nav-indicator {
+  z-index: 2;
+  overflow: hidden;
+  transform: translateX(calc(var(--desktop-nav-index) * 100%));
+  transition: opacity 220ms ease;
+}
+.natty-header nav > a[data-preview=true],
+.natty-header nav > .nav-services[data-preview=true] {
+  color: inherit;
+  transform: none;
+}
+.natty-header .nav-indicator-labels {
+  position: absolute;
+  inset: -4px auto -4px calc(-100% * var(--desktop-nav-index));
+  display: grid;
+  grid-template-columns: repeat(var(--nav-columns), minmax(0, 1fr));
+  width: 100cqw;
+  color: white;
+}
+.natty-header .nav-indicator-labels > span {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+}
+.natty-header nav .nav-services > button { padding-inline: 5px; }
+.natty-header .nav-indicator-arrow {
+  padding-inline: 5px;
+  font: 400 13.333px Arial, sans-serif;
+  transition: transform .2s ease;
+}
+.natty-header nav:has(> .nav-services:is(:hover, :focus-within)) .nav-indicator-arrow,
+.natty-header nav:has(#services-toggle[aria-expanded=true]) .nav-indicator-arrow {
+  transform: rotate(90deg);
+}
+.natty-header nav:has(> .nav-home) > :is(a, .nav-services),
+.natty-header nav:has(> .nav-home) .nav-indicator-labels > span {
+  white-space: nowrap;
+}
+
+@media (min-width: 1024px) {
+  .natty-header nav:has(> .nav-home) { width: clamp(470px, 43vw, 600px); }
+  .natty-header[data-expanded=false][data-media-compact=false]:has(nav > .nav-home) .header-surface {
+    width: calc(clamp(470px, 43vw, 600px) + 36px);
+  }
+  .natty-header[data-media-compact=true]:not(:hover) nav:has(> .nav-home) {
+    width: clamp(400px, 35vw, 500px);
+  }
+  .natty-header[data-media-compact=true]:not(:hover) > .nav-cta { padding-inline: 14px; }
+}
