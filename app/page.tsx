@@ -2,7 +2,6 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import type { ReactNode } from 'react';
 import { EclairShowcase } from '@/components/EclairShowcase';
-import { PageTransition } from '@/components/navigation';
 import { HomeBoard } from '@/components/portfolio/HomeBoard';
 import { serviceOrder, services, type ServiceSlug } from '@/content/services';
 import { defaultDescription, defaultTitle } from '@/content/site';
@@ -24,7 +23,7 @@ const serviceIcons: Record<ServiceSlug, ReactNode> = {
 
 export default function HomePage() {
   return (
-    <PageTransition>
+    <>
       <section className="home-hero" aria-labelledby="home-hero-title">
         <div className="home-hero-content">
           <h1 id="home-hero-title">Every business<br /> has a next chapter.</h1>
@@ -91,6 +90,6 @@ export default function HomePage() {
           <a href="/start">Tell us what you need &gt;</a>
         </div>
       </section>
-    </PageTransition>
+    </>
   );
 }

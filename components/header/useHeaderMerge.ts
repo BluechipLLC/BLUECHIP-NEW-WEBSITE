@@ -97,6 +97,10 @@ export function useHeaderMerge(header: RefObject<HTMLElement | null>, pathname: 
       const next = { expanded: scrolled && !compact, mediaCompact: compact };
       if (next.expanded !== previous.expanded || next.mediaCompact !== previous.mediaCompact) {
         current.current = next;
+        // Apply in this frame, as the merge animation samples the header while it restyles;
+        // React then renders the same values.
+        frame.setAttribute('data-expanded', String(next.expanded));
+        frame.setAttribute('data-media-compact', String(next.mediaCompact));
         setState(next);
       }
     }

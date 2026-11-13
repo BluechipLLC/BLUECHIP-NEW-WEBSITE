@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
-import { useEffect, useRef } from 'react';
+import { useLayoutEffect, useRef } from 'react';
 import type { HomeBoardData } from '@/lib/portfolio';
 import { mountPortfolio } from './mount-portfolio';
 
@@ -10,7 +10,8 @@ export function HomeBoard({ data }: { data: HomeBoardData }) {
   const host = useRef<HTMLDivElement>(null);
   const router = useRouter();
 
-  useEffect(() => mountPortfolio({ mode: 'home', host: host.current!, ...data, navigate: href => router.push(href) }), [data, router]);
+  // Layout effect: the board must exist before navigation restores the scroll position.
+  useLayoutEffect(() => mountPortfolio({ mode: 'home', host: host.current!, ...data, navigate: href => router.push(href) }), [data, router]);
 
   return (
     <div className="portfolio-wireframe portfolio-feed" id="portfolio" ref={host}>

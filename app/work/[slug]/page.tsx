@@ -1,5 +1,4 @@
 import { notFound } from 'next/navigation';
-import { PageTransition } from '@/components/navigation';
 import { FinalCta, PageHead } from '@/components/sections';
 import { caseStudies, findCaseStudy } from '@/content/projects';
 import { pageMetadata } from '@/lib/metadata';
@@ -24,7 +23,7 @@ export default async function CaseStudyPage({ params }: PageProps<'/work/[slug]'
   const study = findCaseStudy((await params).slug);
   if (!study) notFound();
   return (
-    <PageTransition>
+    <>
       <PageHead eyebrow="SELECTED WORK" title={study.name} description={study.description} />
       <section className="section project-gallery" style={{ paddingTop: 0 }}>
         {study.images.map((src, i) => (
@@ -32,6 +31,6 @@ export default async function CaseStudyPage({ params }: PageProps<'/work/[slug]'
         ))}
       </section>
       <FinalCta />
-    </PageTransition>
+    </>
   );
 }

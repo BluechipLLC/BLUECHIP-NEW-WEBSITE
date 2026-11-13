@@ -1,4 +1,3 @@
-import { PageTransition } from '@/components/navigation';
 import { WorkPortfolio } from '@/components/portfolio/WorkPortfolio';
 import { caseStudies } from '@/content/projects';
 import { pageMetadata } from '@/lib/metadata';
@@ -14,11 +13,11 @@ const caseStudyCards = caseStudies.map(({ slug, name, images }) => ({ slug, name
 
 export default function WorkPage() {
   return (
-    <PageTransition>
+    <>
       <section className="section work-feed">
         <h1>Work</h1>
         <WorkPortfolio data={workFeed()} caseStudies={caseStudyCards} />
       </section>
-    </PageTransition>
+    </>
   );
 }

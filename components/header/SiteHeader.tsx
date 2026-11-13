@@ -174,7 +174,11 @@ export function SiteHeader({ children }: { children: ReactNode }) {
         id="mobile-menu"
         aria-label="Main navigation"
         onCancel={event => { event.preventDefault(); closeIsland(); }}
-        onClose={() => setMenuOpen(false)}
+        onClose={() => {
+          setMenuOpen(false);
+          // Closing always hands focus back to the menu button, as the original did.
+          menuButton.current?.focus();
+        }}
         onClick={event => {
           if (event.target !== event.currentTarget) return;
           const bounds = event.currentTarget.getBoundingClientRect();

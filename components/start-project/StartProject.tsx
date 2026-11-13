@@ -71,6 +71,8 @@ export function StartProjectProvider({ children }: { children: ReactNode }) {
   const [error, setError] = useState('');
   const [busy, setBusy] = useState(false);
   const [verifyVisible, setVerifyVisible] = useState(false);
+  // The progress bar keeps its last step while hidden behind a confirmation screen.
+  const [progressStep, setProgressStep] = useState(0);
   const busyRef = useRef(false);
 
   const currentDraft = () => (draftRef.current ??= readDraft());
@@ -94,6 +96,7 @@ export function StartProjectProvider({ children }: { children: ReactNode }) {
     focusOnView.current = focus;
     setView(viewRef.current);
     setScreen(next);
+    if (next.kind === 'step') setProgressStep(next.index);
     setStatus('');
     setError(initialError);
     setVerifyVisible(false);
@@ -459,7 +462,7 @@ export function StartProjectProvider({ children }: { children: ReactNode }) {
                 <a href="mailto:info@bluechipbranding.net">info@bluechipbranding.net</a> and mention your reference.
               </p>
               <p className="project-reference">{`Reference: ${screen.id}`}</p>
-              <button type="button" className="project-back" {...busyProps} onClick={() => submit()}>Retry notification</button>
+              <button type="button" className="project-back" {...busyProps} onClick={() => submit()}>Retry notification</button>{' '}
               <button type="button" className="project-back" {...busyProps} onClick={unlessBusy(() => { resetDraft(); show({ kind: 'step', index: 0 }); })}>
                 Start another project
               </button>
@@ -521,9 +524,9 @@ export function StartProjectProvider({ children }: { children: ReactNode }) {
           </header>
           <div className="project-scroll" ref={scroller}>
             <div className="project-progress" hidden={screen !== null && stepIndex === null}>
-              <p>{stepIndex !== null && `Step ${stepIndex + 1} of ${steps.length} · ${steps[stepIndex][0]}`}</p>
+              <p>{screen !== null && `Step ${progressStep + 1} of ${steps.length} · ${steps[progressStep][0]}`}</p>
               <ol aria-hidden="true">
-                {steps.map((_, i) => <li key={i} className={stepIndex !== null && i <= stepIndex ? 'project-progress-active' : undefined} />)}
+                {steps.map((_, i) => <li key={i} className={screen !== null && i <= progressStep ? 'project-progress-active' : undefined} />)}
               </ol>
             </div>
             <section className="project-step" aria-labelledby="project-title">

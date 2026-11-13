@@ -1,4 +1,3 @@
-import { PageTransition } from '@/components/navigation';
 import { Faq, FinalCta, Founder, PageHead } from '@/components/sections';
 import { pageMetadata } from '@/lib/metadata';
 
@@ -17,7 +16,7 @@ const principles: [string, string][] = [
 
 export default function AboutPage() {
   return (
-    <PageTransition>
+    <>
       <PageHead
         eyebrow="ABOUT BLUECHIP"
         title={<>Good businesses<br />deserve good design.</>}
@@ -29,6 +28,6 @@ export default function AboutPage() {
         <Faq items={principles} open />
       </section>
       <FinalCta />
-    </PageTransition>
+    </>
   );
 }

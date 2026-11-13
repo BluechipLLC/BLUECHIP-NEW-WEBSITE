@@ -2,7 +2,7 @@ import type { Metadata, Viewport } from 'next';
 import { DM_Sans, Manrope } from 'next/font/google';
 import type { ReactNode } from 'react';
 import { SiteHeader } from '@/components/header/SiteHeader';
-import { RouteFocus } from '@/components/navigation';
+import { PageNavigation } from '@/components/navigation';
 import { SiteFooter } from '@/components/SiteFooter';
 import { StartProjectProvider } from '@/components/start-project/StartProject';
 import { defaultDescription, defaultTitle, siteName, siteUrl } from '@/content/site';
@@ -48,7 +48,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
             <main id="main">{children}</main>
             <SiteFooter />
           </SiteHeader>
-          <RouteFocus />
+          <PageNavigation />
         </StartProjectProvider>
       </body>
     </html>

@@ -1,5 +1,4 @@
 import { notFound } from 'next/navigation';
-import { PageTransition } from '@/components/navigation';
 import { Button, Faq, FinalCta, PageHead, TextLink } from '@/components/sections';
 import { isServiceSlug, serviceOrder, services } from '@/content/services';
 import { pageMetadata } from '@/lib/metadata';
@@ -35,7 +34,7 @@ export default async function ServicePage({ params }: PageProps<'/services/[slug
   if (!isServiceSlug(slug)) notFound();
   const service = services[slug];
   return (
-    <PageTransition>
+    <>
       <PageHead eyebrow="SERVICES" title={`${service.title}.`} description={service.summary} />
       <section className="content-section">
         <h2>Designed around your business.</h2>
@@ -57,6 +56,6 @@ export default async function ServicePage({ params }: PageProps<'/services/[slug
         <TextLink href="/launch">Explore Bluechip Launch</TextLink>
       </section>
       <FinalCta />
-    </PageTransition>
+    </>
   );
 }

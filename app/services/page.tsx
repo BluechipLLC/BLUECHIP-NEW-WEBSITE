@@ -1,4 +1,3 @@
-import { PageTransition } from '@/components/navigation';
 import { FinalCta, LaunchSection, PageHead, ServicePanels } from '@/components/sections';
 import { pageMetadata } from '@/lib/metadata';
 
@@ -10,13 +9,13 @@ export const metadata = pageMetadata({
 
 export default function ServicesPage() {
   return (
-    <PageTransition>
+    <>
       <PageHead eyebrow="WHAT WE DO" title={<>Three disciplines.<br />One creative partner.</>} description="Build a brand, take it online, bring it into the world." />
       <section className="section" style={{ paddingTop: 0 }}>
         <ServicePanels />
       </section>
       <LaunchSection />
       <FinalCta />
-    </PageTransition>
+    </>
   );
 }

@@ -1,7 +1,7 @@
 'use client';
 
 import { useRouter } from 'next/navigation';
-import { useEffect, useRef } from 'react';
+import { useLayoutEffect, useRef } from 'react';
 import type { WorkFeedData } from '@/lib/portfolio';
 import { mountPortfolio, type CaseStudyCard } from './mount-portfolio';
 
@@ -9,7 +9,8 @@ export function WorkPortfolio({ data, caseStudies }: { data: WorkFeedData; caseS
   const host = useRef<HTMLDivElement>(null);
   const router = useRouter();
 
-  useEffect(
+  // Layout effect: the board must exist before navigation restores the scroll position.
+  useLayoutEffect(
     () => mountPortfolio({ mode: 'work', host: host.current!, ...data, caseStudies, navigate: href => router.push(href) }),
     [data, caseStudies, router],
   );

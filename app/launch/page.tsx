@@ -1,4 +1,3 @@
-import { PageTransition } from '@/components/navigation';
 import { Faq, FinalCta, LaunchSection, NattyShowcase, PageHead } from '@/components/sections';
 import { pageMetadata } from '@/lib/metadata';
 
@@ -17,7 +16,7 @@ const questions: [string, string][] = [
 
 export default function LaunchPage() {
   return (
-    <PageTransition>
+    <>
       <PageHead
         eyebrow="BLUECHIP LAUNCH"
         title={<>From first idea.<br />To first impression.</>}
@@ -36,6 +35,6 @@ export default function LaunchPage() {
         <Faq items={questions} />
       </section>
       <FinalCta />
-    </PageTransition>
+    </>
   );
 }
