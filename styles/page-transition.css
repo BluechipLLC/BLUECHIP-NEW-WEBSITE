@@ -1,0 +1,38 @@
+:root {
+  --page-scroll-distance: clamp(110px, 22svh, 245px);
+  --page-scroll-duration: 420ms;
+  --page-scroll-easing: cubic-bezier(.2, .75, .25, 1);
+}
+
+/* The header stays put while the page underneath scrolls into place. */
+.natty-header { view-transition-name: site-header; }
+
+::view-transition-group(site-header) {
+  z-index: 1;
+  animation: none;
+}
+::view-transition-old(site-header) { display: none; }
+::view-transition-new(site-header) { animation: none; }
+
+/* Page sections carry the motion (via <PageTransition>); the rest of the document swaps in place. */
+::view-transition-old(root), ::view-transition-new(root) { animation: none; }
+
+::view-transition-old(.page-scroll), ::view-transition-new(.page-scroll) {
+  mix-blend-mode: normal;
+  animation-duration: var(--page-scroll-duration);
+  animation-timing-function: var(--page-scroll-easing);
+  animation-fill-mode: both;
+}
+::view-transition-old(.page-scroll) { animation-name: page-scroll-out; }
+::view-transition-new(.page-scroll) { animation-name: page-scroll-in; }
+
+@keyframes page-scroll-out {
+  to { transform: translateY(calc(var(--page-scroll-distance) * -.65)); opacity: 0; }
+}
+@keyframes page-scroll-in {
+  from { transform: translateY(var(--page-scroll-distance)); opacity: .6; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-group(*), ::view-transition-old(*), ::view-transition-new(*) { animation: none !important; }
+}
