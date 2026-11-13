@@ -13,8 +13,18 @@ import '@/styles/start-project.css';
 import '@/styles/homepage-redesign.css';
 import '@/styles/page-transition.css';
 
-const dmSans = DM_Sans({ subsets: ['latin'], weight: ['400', '500', '600', '700'], variable: '--font-dm-sans', display: 'swap' });
-const manrope = Manrope({ subsets: ['latin'], weight: ['400', '500', '600', '700', '800'], variable: '--font-manrope', display: 'swap' });
+// next/font self-hosts the same Google fonts under their real family names ("DM Sans", "Manrope"),
+// which styles/style.css references directly. Its `variable`/`className` values are deliberately not
+// used: they add a size-adjusted fallback face, which changes how glyphs missing from the fonts
+// (arrows, symbols) render compared with the plain Arial fallback the design was built on.
+const dmSans = DM_Sans({ subsets: ['latin'], weight: ['400', '500', '600', '700'], display: 'swap' });
+const manrope = Manrope({ subsets: ['latin'], weight: ['400', '500', '600', '700', '800'], display: 'swap' });
+/** Family names the stylesheet relies on; the build fails loudly here if next/font ever renames them. */
+for (const [font, name] of [[dmSans, 'DM Sans'], [manrope, 'Manrope']] as const) {
+  if (!font.style.fontFamily.includes(`'${name}'`) && !font.style.fontFamily.includes(`"${name}"`)) {
+    throw new Error(`next/font exposes ${name} as ${font.style.fontFamily}; styles/style.css expects the plain family name.`);
+  }
+}
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
@@ -30,13 +40,14 @@ export const viewport: Viewport = { themeColor: '#00529c' };
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     // Next keeps route changes instant even though in-page anchors scroll smoothly.
-    <html lang="en" data-scroll-behavior="smooth" className={`${dmSans.variable} ${manrope.variable}`}>
+    <html lang="en" data-scroll-behavior="smooth">
       <body>
         <StartProjectProvider>
           <a className="skip" href="#main">Skip to content</a>
-          <SiteHeader />
-          <main id="main">{children}</main>
-          <SiteFooter />
+          <SiteHeader>
+            <main id="main">{children}</main>
+            <SiteFooter />
+          </SiteHeader>
           <RouteFocus />
         </StartProjectProvider>
       </body>

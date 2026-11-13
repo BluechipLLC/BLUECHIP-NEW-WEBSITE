@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { useCallback, useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useRef, useState, type ReactNode } from 'react';
 import { serviceOrder, services } from '@/content/services';
 import { ChipLogo } from './ChipLogo';
 import { NavSelector, type NavItem, type PreviewProps } from './NavSelector';
@@ -17,7 +17,8 @@ const desktopItems: NavItem[] = [
 ];
 const mobileItems: NavItem[] = desktopItems.map(({ href, label, home }) => ({ href, label, home }));
 
-export function SiteHeader() {
+/** Renders the header, then the page (`children`), then the mobile menu, matching the original document order. */
+export function SiteHeader({ children }: { children: ReactNode }) {
   const pathname = usePathname();
   const header = useRef<HTMLElement>(null);
   const menuButton = useRef<HTMLButtonElement>(null);
@@ -167,6 +168,7 @@ export function SiteHeader() {
           <span /><span /><span />
         </button>
       </header>
+      {children}
       <dialog
         ref={dialog}
         id="mobile-menu"

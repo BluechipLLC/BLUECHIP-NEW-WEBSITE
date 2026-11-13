@@ -153,9 +153,9 @@ export function EclairShowcase() {
           ))}
         </div>
         <div className="eclair-gallery-controls">
-          <button type="button" data-slide-step="-1" aria-label="Previous slide" disabled={current === 0} onClick={() => stepSlide(-1)}>←</button>
+          <button type="button" data-slide-step="-1" aria-label="Previous slide" disabled={Boolean(mode) && current === 0} onClick={() => stepSlide(-1)}>←</button>
           <span className="eclair-slide-status" aria-live="polite">{mode ? `${current + 1} / ${slides.length}` : ''}</span>
-          <button type="button" data-slide-step="1" aria-label="Next slide" disabled={current === slides.length - 1} onClick={() => stepSlide(1)}>→</button>
+          <button type="button" data-slide-step="1" aria-label="Next slide" disabled={Boolean(mode) && current === slides.length - 1} onClick={() => stepSlide(1)}>→</button>
         </div>
       </div>
     </section>

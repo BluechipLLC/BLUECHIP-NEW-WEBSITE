@@ -21,7 +21,7 @@ export function SiteFooter() {
             <a href={contact.instagram}>Instagram</a>
             <a href={contact.linkedin}>LinkedIn</a>
           </div>
-          <small>© {new Date().getFullYear()} {siteName}. All rights reserved.</small>
+          <small>{`© 2026 ${siteName}. All rights reserved.`}</small>
         </div>
       </div>
       <nav className="footer-nav" aria-label="Footer navigation">

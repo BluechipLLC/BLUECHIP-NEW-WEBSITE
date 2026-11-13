@@ -458,7 +458,7 @@ export function StartProjectProvider({ children }: { children: ReactNode }) {
                 We couldn’t send the automatic notification. If you’d like to follow up, email{' '}
                 <a href="mailto:info@bluechipbranding.net">info@bluechipbranding.net</a> and mention your reference.
               </p>
-              <p className="project-reference">Reference: {screen.id}</p>
+              <p className="project-reference">{`Reference: ${screen.id}`}</p>
               <button type="button" className="project-back" {...busyProps} onClick={() => submit()}>Retry notification</button>
               <button type="button" className="project-back" {...busyProps} onClick={unlessBusy(() => { resetDraft(); show({ kind: 'step', index: 0 }); })}>
                 Start another project
@@ -520,7 +520,7 @@ export function StartProjectProvider({ children }: { children: ReactNode }) {
             </button>
           </header>
           <div className="project-scroll" ref={scroller}>
-            <div className="project-progress" hidden={stepIndex === null}>
+            <div className="project-progress" hidden={screen !== null && stepIndex === null}>
               <p>{stepIndex !== null && `Step ${stepIndex + 1} of ${steps.length} · ${steps[stepIndex][0]}`}</p>
               <ol aria-hidden="true">
                 {steps.map((_, i) => <li key={i} className={stepIndex !== null && i <= stepIndex ? 'project-progress-active' : undefined} />)}

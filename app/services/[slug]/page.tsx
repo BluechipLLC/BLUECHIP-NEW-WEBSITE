@@ -40,7 +40,7 @@ export default async function ServicePage({ params }: PageProps<'/services/[slug
       <section className="content-section">
         <h2>Designed around your business.</h2>
         <p>We start by understanding your business, audience, and goals. You review the work at agreed stages, with clear expectations from the first conversation.</p>
-        <Button href={`/start?service=${slug}`}>Start a {service.projectNoun} project</Button>
+        <Button href={`/start?service=${slug}`}>{`Start a ${service.projectNoun} project`}</Button>
       </section>
       <section className="content-section">
         <h2>Typical deliverables</h2>
